@@ -14,5 +14,7 @@ class Overview : Activity() {
         val username = intent.getStringExtra("username")
         val api = Regex("(\\w+)$").replace(Backend.api, username)
         Log.d("#code#", "default api: ${Backend.api}; users api: $api")
+
+        Backend.parse(api)
     }
 }
