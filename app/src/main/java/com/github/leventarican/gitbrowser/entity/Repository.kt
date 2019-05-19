@@ -9,4 +9,4 @@ package com.github.leventarican.gitbrowser.entity
  *  "clone_url": "https://github.com/leventarican/GitBrowser.git",
  *  "language": "Kotlin",
  */
-data class Repository(val cloneUrl: String, val language: String?, val updatedAt: String, val description: String?)
+data class Repository(val name: String, val description: String?, val updatedAt: String, val language: String?)

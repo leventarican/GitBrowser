@@ -7,9 +7,23 @@
         android:layout_height="match_parent"
         tools:context=".Main">
 
+    <ImageView
+            android:src="@drawable/github"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:alpha="0.1"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_username"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
     <EditText android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:id="@+id/et_username"
+              android:hint="@string/default_username"
+              android:gravity="center"
               android:layout_marginEnd="8dp"
               android:layout_marginStart="8dp"
               android:layout_marginBottom="8dp"

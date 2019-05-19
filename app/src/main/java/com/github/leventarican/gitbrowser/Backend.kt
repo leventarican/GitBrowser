@@ -5,27 +5,24 @@ import com.github.leventarican.gitbrowser.entity.Repository
 import org.json.JSONArray
 import java.net.URL
 
+/**
+ * we need only one instance of this
+ */
 object Backend {
-//    internal val api = "https://api.github.com/users/leventarican"
-    internal val api = "https://api.github.com/users/leventarican/repos"
-
-    fun parse(userAPI: String) : MutableList<Repository> {
-        var response = "not initialized"
+    fun parse(username: String) : MutableList<Repository> {
+        val api = "https://api.github.com/users/$username/repos"
+        val response = URL(api).readText()
         val result = mutableListOf<Repository>()
-        response = URL(userAPI).readText()
-//            Thread.sleep(2000)
-        Log.d("#code#", "### $response")
         val userJson = JSONArray(response)
         for (i in 0 until userJson.length()) {
             val jsonObject = userJson.getJSONObject(i)
-            val cloneUrl = jsonObject.get("clone_url") as String
-            val language = jsonObject.get("language") as? String // can be null
-            val updatedAt = jsonObject.get("updated_at") as String
+            val name = jsonObject.get("name") as String
             val description= jsonObject.get("description") as? String
-            Log.d("#code#", "clone_url: $cloneUrl; language: $language; updated_at: $updatedAt; description: $description")
-            result.add(Repository(cloneUrl, language, updatedAt, description))
+            val updatedAt = jsonObject.get("updated_at") as String
+            val language = jsonObject.get("language") as? String
+            Log.d("#code#", "name: $name; description: $description; updated_at: $updatedAt; language: $language")
+            result.add(Repository(name, description, updatedAt, language))
         }
-
         return result
     }
 }

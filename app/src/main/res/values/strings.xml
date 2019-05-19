@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GitBrowser</string>
+    <string name="default_username">leventarican</string>
+    <string name="language_icon">Language icon</string>
 </resources>
